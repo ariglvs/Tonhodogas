@@ -1,8 +1,18 @@
 body {
-    color: rgb(204, 50, 165);
-    text-align: center;
-    background-color: blue;
+    color: rgba(210, 255, 206, 1);
+    text-align: left;
+    background-color: rgb(21, 129, 25);
 }
 a {
     color: white;
+}
+h5{
+    text-align: center;
+    
+    font-size: 40px;
+}
+p{
+    text-align: center;
+   
+    font-size: 20px;
 }
