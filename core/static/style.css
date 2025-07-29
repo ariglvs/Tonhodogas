@@ -46,6 +46,13 @@ img
     height:"24";
 }
 
+div.vapovapo {
+  background-color: coral;
+  text-align: center;
+  font-size: 60px;
+  border-radius: ;
+}
+
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
