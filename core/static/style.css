@@ -1,18 +1,72 @@
 body {
-    color: rgba(210, 255, 206, 1);
-    text-align: left;
-    background-color: rgb(21, 129, 25);
+    color: rgb(10, 50, 6);
+    background-color: rgb(138, 227, 141);
 }
+
 a {
     color: white;
+    text-align: center;
+    font: size 35%;
+    font-style: initial;
+
 }
+
+b{
+    text-align: center;
+    font-size: large;
+    font-style: inherit;
+}
+
+
 h5{
     text-align: center;
     
     font-size: 40px;
 }
-p{
+H1{
+    text-align: left;
+
+}
+
+H2{
     text-align: center;
-   
+    font-size: 60px;
+    font-style: oblique;
+}
+
+p{
+    text-align: center;;
     font-size: 20px;
+}
+
+
+img
+{
+    width:"30";
+    height:"24";
+}
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-start {
+      --bs-position: start;
+
+      &[data-bs-popper] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    .dropdown-menu#{$infix}-end {
+      --bs-position: end;
+
+      &[data-bs-popper] {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
 }
