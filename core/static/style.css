@@ -1,89 +1,63 @@
+/* Estilo base */
 body {
-    color: rgb(10, 50, 6);
-    background-color: rgb(9, 119, 11);
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(90deg, #2e7d32, #66bb6a); /* fundo degradê verde */
+  color: white;
 }
 
-a {
-    color: rgb(247, 247, 247);
-    text-align: center;
-    font: size 35%;
-    font-style: initial;
-    text-decoration: none;
-
-}
-
-b{
-    text-align: center;
-    font-size: large;
-    font-style: inherit;
-}
-
-
-h5{
-    text-align: center;
-    
-    font-size: 40px;
-}
-H1{
-    text-align: left;
-
-}
-
-H2{
-    text-align: center;
-    font-size: 60px;
-    font-style: oblique;
-    color: white;
-}
-
-p{
-    text-align: center;;
-    font-size: 20px;
-    color: white;
-}
-
-
-img
-{
-    width: 100px;
-    height: 100px;
-}
-
-div.vapovapo {
+/* Seção principal da página */
+.hero {
   display: flex;
-  align-items: center;
   justify-content: center;
-  justify-items: center;
-  text-align: center;
-  width: 500px;
-  height: 70px;
-  background-color: coral;
-  font-size: 60px;
-  border-radius: 50px;
-  margin: 0 auto;
+  align-items: center;
+  min-height: 90vh;
+  text-align: left;
+  padding: 50px;
 }
 
+.hero-content {
+  max-width: 600px;
+}
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+/* Logo */
+.hero-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
 
-    .dropdown-menu#{$infix}-start {
-      --bs-position: start;
+/* Título principal */
+.hero-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-      &[data-bs-popper] {
-        right: auto;
-        left: 0;
-      }
-    }
+/* Subtítulo */
+.hero-subtitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
-    .dropdown-menu#{$infix}-end {
-      --bs-position: end;
+/* Texto complementar */
+.hero-text {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
 
-      &[data-bs-popper] {
-        right: 0;
-        left: auto;
-      }
-    }
-  }
+/* Botão de WhatsApp */
+.btn-whatsapp {
+  background-color: #f26522;
+  color: white;
+  padding: 14px 28px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #d8561e;
 }
