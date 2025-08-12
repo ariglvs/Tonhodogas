@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin # type: ignore
 from django.urls import path # type: ignore
-from core.views import index, cadastro
+from core.views import index, cadastro, produtos, endereco, pagamento
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('cadastro/', cadastro, name='cadastro'),
+    path('produtos/', produtos, name='produtos'),
+    path('endereco/', endereco, name='endereco'),
+    path('pagamento/', pagamento, name='pagamento'),
+
 ]

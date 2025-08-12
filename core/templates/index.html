@@ -26,14 +26,11 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Início</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Produtos</a>
+        <a href= "{% url 'produtos' %}" class="login-btn">
+        <i class="fas fa-user"></i> Produtos
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contato</a>
-      </li>
- <a href="cadastro.html" class="login-btn">
-  <i class="fas fa-user"></i> Cadastrar
+        <a href= "{% url 'cadastro' %}" class="login-btn">
+        <i class="fas fa-user"></i> Cadastrar
 </a>
 </a>
     </ul>

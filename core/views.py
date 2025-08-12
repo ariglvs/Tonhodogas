@@ -6,3 +6,13 @@ def  index(request):
 
 def cadastro(request):
     return render(request, "cadastro.html")
+
+def produtos(request):
+    return render(request, "produtos.html")
+
+def endereco(request):
+    return render(request, "endereco.html")
+
+def pagamento(request):
+    return render(request, "pagamento.html")
+
