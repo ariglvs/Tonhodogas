@@ -3,13 +3,17 @@
 {% block title %}Início - Tonho do Gás{% endblock %}
 
 {% block content %}
-<h2>Bem-vindo ao sistema!</h2>
+<h2>Bem-vindo ao Sistema Tonho do Gás 🔥</h2>
 
-<p>Aqui você pode gerenciar usuários, produtos, pedidos e endereços.</p>
+<p>Escolha uma das opções abaixo:</p>
 
-<ul>
-    <li><a href="/criar-usuario/">Cadastrar usuário</a></li>
-    <li><a href="/criar-endereco/">Cadastrar endereço</a></li>
-    <li><a href="/produtos/">Listar produtos</a></li>
-</ul>
+<div class="home-buttons">
+    <a href="/criar-usuario/" class="btn">Cadastrar Usuário</a>
+    <a href="/criar-endereco/" class="btn">Cadastrar Endereço</a>
+    <a href="/criar-produto/" class="btn">Cadastrar Produto</a>
+    <a href="/produtos/" class="btn">Produtos</a>
+    <a href="/criar-pedido/" class="btn">Fazer Pedido</a>
+    <a href="/pedidos/" class="btn">Pedidos</a>
+</div>
+
 {% endblock %}

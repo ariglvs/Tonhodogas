@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario, Endereco, Produto, Pedido, ItemPedido
 
+def require_login(view_func):
+    def wrapper(request, *args, **kwargs):
+        if not request.session.get("usuario_id"):
+            return redirect("login")
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
 def home(request):
     return render(request, "home.html")
 
+@require_login
 def produtos(request):
     produtos = Produto.objects.all()
     return render(request, "produtos.html", {"produtos": produtos})
 
+@require_login
 def criar_produto(request):
     if request.method == "POST":
         Produto.objects.create(
@@ -31,6 +40,7 @@ def criar_usuario(request):
         return redirect("home")
     return render(request, "criar_usuario.html")
 
+@require_login
 def criar_endereco(request):
     # pegar lista de usuários para o select
     usuarios = Usuario.objects.all().order_by("nome")
@@ -66,11 +76,12 @@ def criar_endereco(request):
     # GET -> exibe o formulário
     return render(request, "criar_endereco.html", {"usuarios": usuarios})
 
+@require_login
 def pedidos(request):
     lista = Pedido.objects.all()
     return render(request, "pedidos.html", {"pedidos": lista})
 
-
+@require_login
 def criar_pedido(request):
     usuarios = Usuario.objects.all()
     enderecos = Endereco.objects.all()
