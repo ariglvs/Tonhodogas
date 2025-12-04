@@ -1,0 +1,25 @@
+<h1>Lista de Produtos</h1>
+
+<a href="/criar-produto/">Cadastrar novo produto</a>
+<br><br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Descrição</th>
+        <th>Estoque</th>
+    </tr>
+
+    {% for p in produtos %}
+    <tr>
+        <td>{{ p.nome }}</td>
+        <td>R$ {{ p.preco }}</td>
+        <td>{{ p.descricao }}</td>
+        <td>{{ p.estoque }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/">Voltar</a>

@@ -1,0 +1,34 @@
+<h1>Criar Pedido</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Usuário:</label><br>
+    <select name="usuario">
+        {% for u in usuarios %}
+        <option value="{{ u.id_usuario }}">{{ u.nome }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Endereço:</label><br>
+    <select name="endereco">
+        {% for e in enderecos %}
+        <option value="{{ e.id_endereco }}">{{ e.rua }} - {{ e.numero }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Produto:</label><br>
+    <select name="produto">
+        {% for p in produtos %}
+        <option value="{{ p.id_produto }}">{{ p.nome }} (R$ {{ p.preco }})</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Quantidade:</label><br>
+    <input type="number" name="quantidade" min="1"><br><br>
+
+    <button type="submit">Criar Pedido</button>
+</form>
+
+<br>
+<a href="/pedidos/">Voltar</a>

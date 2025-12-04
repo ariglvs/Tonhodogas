@@ -1,0 +1,27 @@
+<h1>Lista de Pedidos</h1>
+
+<a href="/criar-pedido/">Criar Pedido</a>
+<br><br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Usuário</th>
+        <th>Endereço</th>
+        <th>Status</th>
+        <th>Data</th>
+    </tr>
+
+    {% for p in pedidos %}
+    <tr>
+        <td>{{ p.id_pedido }}</td>
+        <td>{{ p.usuario.nome }}</td>
+        <td>{{ p.endereco.rua }} - {{ p.endereco.numero }}</td>
+        <td>{{ p.status }}</td>
+        <td>{{ p.data_pedido }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/">Voltar</a>

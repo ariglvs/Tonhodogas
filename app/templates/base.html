@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Tonho do Gás{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <div class="topo">
+        TONHO DO GÁS 🔥
+    </div>
+
+    <div class="menu">
+        <a href="/">Início</a>
+        <a href="/produtos/">Produtos</a>
+        <a href="/criar-endereco/">Cadastrar Endereço</a>
+
+        {% if request.session.usuario_id %}
+            <span style="margin-left: 20px;">Olá, {{ request.session.usuario_nome }}!</span>
+            <a href="/logout/" style="float:right;">Sair</a>
+        {% else %}
+            <a href="/login/" style="float:right;">Login</a>
+        {% endif %}
+    </div>
+
+    <div class="conteudo">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

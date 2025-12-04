@@ -1,12 +1,24 @@
-from django.shortcuts import render, redirect
-from .models import Produto, Pedido, Usuario
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Usuario, Endereco, Produto, Pedido, ItemPedido
 
 def home(request):
     return render(request, "home.html")
 
 def produtos(request):
-    lista = Produto.objects.all()
-    return render(request, "produtos.html", {"produtos": lista})
+    produtos = Produto.objects.all()
+    return render(request, "produtos.html", {"produtos": produtos})
+
+def criar_produto(request):
+    if request.method == "POST":
+        Produto.objects.create(
+            nome=request.POST["nome"],
+            preco=request.POST["preco"],
+            descricao=request.POST["descricao"],
+            estoque=request.POST["estoque"]
+        )
+        return redirect("produtos")
+
+    return render(request, "criar_produto.html")
 
 def criar_usuario(request):
     if request.method == "POST":
@@ -18,3 +30,100 @@ def criar_usuario(request):
         )
         return redirect("home")
     return render(request, "criar_usuario.html")
+
+def criar_endereco(request):
+    # pegar lista de usuários para o select
+    usuarios = Usuario.objects.all().order_by("nome")
+
+    if request.method == "POST":
+        # pega dados do formulário
+        usuario_id = request.POST.get("usuario")
+        rua = request.POST.get("rua", "").strip()
+        numero = request.POST.get("numero", "").strip()
+        bairro = request.POST.get("bairro", "").strip()
+        cidade = request.POST.get("cidade", "").strip()
+        complemento = request.POST.get("complemento", "").strip()
+
+        # validação básica (pode melhorar depois)
+        if not usuario_id or not rua or not numero or not bairro or not cidade:
+            msg = "Preencha todos os campos obrigatórios."
+            return render(request, "criar_endereco.html", {"usuarios": usuarios, "erro": msg})
+
+        usuario = get_object_or_404(Usuario, pk=usuario_id)
+
+        # cria o endereco
+        Endereco.objects.create(
+            rua=rua,
+            numero=numero,
+            bairro=bairro,
+            cidade=cidade,
+            complemento=complemento,
+            usuario=usuario
+        )
+
+        return redirect("home")
+
+    # GET -> exibe o formulário
+    return render(request, "criar_endereco.html", {"usuarios": usuarios})
+
+def pedidos(request):
+    lista = Pedido.objects.all()
+    return render(request, "pedidos.html", {"pedidos": lista})
+
+
+def criar_pedido(request):
+    usuarios = Usuario.objects.all()
+    enderecos = Endereco.objects.all()
+    produtos = Produto.objects.all()
+
+    if request.method == "POST":
+        usuario_id = request.POST["usuario"]
+        endereco_id = request.POST["endereco"]
+        produto_id = request.POST["produto"]
+        quantidade = int(request.POST["quantidade"])
+
+        usuario = get_object_or_404(Usuario, pk=usuario_id)
+        endereco = get_object_or_404(Endereco, pk=endereco_id)
+        produto = get_object_or_404(Produto, pk=produto_id)
+
+        pedido = Pedido.objects.create(
+            usuario=usuario,
+            endereco=endereco,
+            status="Aguardando"
+        )
+
+        ItemPedido.objects.create(
+            pedido=pedido,
+            produto=produto,
+            quantidade=quantidade,
+            preco_unit=produto.preco
+        )
+
+        return redirect("pedidos")
+
+    return render(request, "criar_pedido.html", {
+        "usuarios": usuarios,
+        "enderecos": enderecos,
+        "produtos": produtos
+    })
+
+def login(request):
+    erro = ""
+
+    if request.method == "POST":
+        email = request.POST["email"]
+        senha = request.POST["senha"]
+
+        try:
+            usuario = Usuario.objects.get(email=email, senha=senha)
+            request.session["usuario_id"] = usuario.id_usuario
+            request.session["usuario_nome"] = usuario.nome
+            return redirect("home")
+        except Usuario.DoesNotExist:
+            erro = "Email ou senha incorretos."
+
+    return render(request, "login.html", {"erro": erro})
+
+def logout(request):
+    request.session.flush()
+    return redirect("login")
