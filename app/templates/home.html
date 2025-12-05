@@ -3,29 +3,36 @@
 {% block bodyclass %}home-bg{% endblock %}
 
 {% block layout %}
-<!-- TELA TODA -->
+
 <div class="home-container">
 
-    <!-- TOPÃO VERDE OLIVA -->
-<div class="home-topo">
-    <h1>TONHO DO GÁS</h1>
+    <div class="home-topo">
+        <h1>TONHO DO GÁS</h1>
 
-    {% if request.session.usuario_id %}
-        <p class="home-ola">Olá, {{ request.session.usuario_nome }}!</p>
-        <a href="/logout/" class="home-login-btn">Sair</a>
-    {% else %}
-        <a href="/login/" class="home-login-btn">Login</a>
-    {% endif %}
-</div>
+        {% if request.session.usuario_id %}
+            <p class="home-ola">Olá, {{ request.session.usuario_nome }}!</p>
+            <a href="/logout/" class="home-login-btn">Sair</a>
+        {% else %}
+            <a href="/login/" class="home-login-btn">Login</a>
+        {% endif %}
+    </div>
 
-    <!-- BOTÕES LARANJA -->
     <div class="home-btn-area">
-        <a href="/produtos/" class="home-btn">Produtos</a>
-        <a href="/pedidos/" class="home-btn">Pedidos</a>
-        <a href="/criar-pedido/" class="home-btn">Fazer Pedidos</a>
-        <a href="/criar-produto/" class="home-btn">Cadastrar Produto</a>
-        <a href="/criar-endereco/" class="home-btn">Cadastrar Endereço</a>
+
+        {% if usuario.tipo == "cliente" %}
+            <a href="/produtos/" class="home-btn">Produtos</a>
+            <a href="/criar-pedido/" class="home-btn">Fazer Pedido</a>
+            <a href="/criar-endereco/" class="home-btn">Cadastrar Endereço</a>
+
+        {% elif usuario.tipo == "admin" %}
+            <a href="/produtos/" class="home-btn">Produtos</a>
+            <a href="/criar-produto/" class="home-btn">Cadastrar Produto</a>
+            <a href="/criar-endereco/" class="home-btn">Cadastrar Endereço</a>
+            <a href="/pedidos/" class="home-btn">Pedidos</a>
+
+        {% endif %}
     </div>
 
 </div>
+
 {% endblock %}

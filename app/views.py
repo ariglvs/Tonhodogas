@@ -8,8 +8,13 @@ def require_login(view_func):
         return view_func(request, *args, **kwargs)
     return wrapper
 
+@require_login
 def home(request):
-    return render(request, "home.html")
+    if "usuario_id" not in request.session:
+        return redirect("login")
+
+    usuario = Usuario.objects.get(pk=request.session["usuario_id"])
+    return render(request, "home.html", {"usuario": usuario})
 
 @require_login
 def produtos(request):
@@ -42,11 +47,11 @@ def criar_usuario(request):
 
 @require_login
 def criar_endereco(request):
-    # pegar lista de usuários para o select
+    
     usuarios = Usuario.objects.all().order_by("nome")
 
     if request.method == "POST":
-        # pega dados do formulário
+        
         usuario_id = request.POST.get("usuario")
         rua = request.POST.get("rua", "").strip()
         numero = request.POST.get("numero", "").strip()
@@ -54,14 +59,14 @@ def criar_endereco(request):
         cidade = request.POST.get("cidade", "").strip()
         complemento = request.POST.get("complemento", "").strip()
 
-        # validação básica (pode melhorar depois)
+        
         if not usuario_id or not rua or not numero or not bairro or not cidade:
             msg = "Preencha todos os campos obrigatórios."
             return render(request, "criar_endereco.html", {"usuarios": usuarios, "erro": msg})
 
         usuario = get_object_or_404(Usuario, pk=usuario_id)
 
-        # cria o endereco
+        
         Endereco.objects.create(
             rua=rua,
             numero=numero,
@@ -73,7 +78,7 @@ def criar_endereco(request):
 
         return redirect("home")
 
-    # GET -> exibe o formulário
+    
     return render(request, "criar_endereco.html", {"usuarios": usuarios})
 
 @require_login
