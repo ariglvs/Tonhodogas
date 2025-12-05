@@ -1,26 +1,24 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
+<div class="card-login">
+    <h1>LOGIN</h1>
 
-<form method="post">
-    {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
 
-    <label>Email:</label><br>
-    <input type="email" name="email"><br><br>
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="senha" placeholder="Senha">
 
-    <label>Senha:</label><br>
-    <input type="password" name="senha"><br><br>
+        {% if erro %}
+            <p class="erro">{{ erro }}</p>
+        {% endif %}
 
-    {% if erro %}
-        <p style="color:red;">{{ erro }}</p>
-    {% endif %}
+        <button type="submit" class="btn-laranja">Entrar</button>
+    </form>
 
-    <button type="submit">Entrar</button>
-</form>
-
-<br>
-<a href="/criar-usuario/">Criar conta</a>
+    <a href="/criar-usuario/" class="link-conta">Criar conta</a>
+</div>
 {% endblock %}

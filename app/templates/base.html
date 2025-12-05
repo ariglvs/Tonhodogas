@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
-<body>
+<body class="{% block bodyclass %}{% endblock %}">
 
+    {% block layout %}
+    <!-- layout padrão (home, produtos etc.) -->
     <div class="topo">
         TONHO DO GÁS 🔥
     </div>
 
     <div class="menu">
         <a href="/">Início</a>
-
 
         {% if request.session.usuario_id %}
             <span style="margin-left: 20px;">Olá, {{ request.session.usuario_nome }}!</span>
@@ -29,6 +30,7 @@
     <div class="conteudo">
         {% block content %}{% endblock %}
     </div>
+    {% endblock %}
 
 </body>
 </html>

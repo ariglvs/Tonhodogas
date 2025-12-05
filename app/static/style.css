@@ -52,31 +52,6 @@ body {
     box-shadow: 0 0 10px #0004;
 }
 
-/* container dos botões */
-.home-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 300px;
-}
-
-/* estilo padrão dos botões */
-.btn {
-    background-color: #ff7f00; 
-    color: white;
-    padding: 12px;
-    text-align: center;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.2s ease-in-out;
-}
-
-/* hover - efeito ao passar o mouse */
-.btn:hover {
-    background-color: #e67000;
-    transform: scale(1.03);
-}
-
 /* Inputs */
 input, select, textarea {
     width: 100%;
@@ -89,4 +64,243 @@ input, select, textarea {
 /* Títulos verdes */
 h1, h2, h3 {
     color: var(--verde-escuro);
+}
+
+/* Inputs estilo imagem */
+.card-laranja input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 18px 0;
+    border: none;
+    background: #f2f2f2;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+/* Link embaixo */
+.link-conta {
+    color: black;
+    display: block;
+    margin-top: 18px;
+    text-decoration: underline;
+    text-align: left;
+}
+
+/* Mensagem de erro */
+.erro {
+    color: yellow;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* fundo verde fullscreen */
+.auth-bg {
+    background: linear-gradient(135deg, #1e8f3c, #3ecf5c);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* botão INÍCIO no topo */
+.auth-voltar {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+
+/* box laranja */
+.auth-box {
+    background: #ff6600;
+    padding: 40px;
+    width: 380px;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+}
+
+/* título */
+.auth-box h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+/* inputs */
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px 0;
+    border: none;
+    border-radius: 8px;
+}
+
+/* botão entrar/cadastrar */
+.auth-box button {
+    width: 50%;
+    padding: 12px;
+    background: #d9d9d9;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* link criar conta */
+.auth-box a {
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+/* fundo verde da tela toda */
+.tela-verde {
+    background: linear-gradient(135deg, #1a8f3c, #4cd964);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* botão "INÍCIO" superior */
+.link-inicio {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+/* card laranja */
+.card-login {
+    background: #ff6600;
+    width: 450px;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.card-login h1 {
+    color: white;
+    margin-bottom: 25px;
+}
+
+/* inputs */
+.card-login input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+/* botão */
+.btn-laranja {
+    background: #d4d4d4;
+    border: none;
+    padding: 10px 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+.link-conta {
+    display: block;
+    margin-top: 15px;
+    color: #000;
+    text-decoration: underline;
+}
+
+.erro {
+    color: yellow;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Fundo geral da home */
+.home-bg {
+    background: linear-gradient(135deg, #1e8f3c, #3ecf5c);
+    margin: 0;
+}
+
+/* container geral */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* topo verde oliva */
+.home-topo {
+    width: 100%;
+    background: #4b6525;   /* verde oliva */
+    padding: 10px 0;        /* diminuí a altura */
+    text-align: center;
+    position: relative;
+}
+
+.home-topo h1 {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Arial Black", sans-serif;
+    color: white;
+}
+
+/* botão login no topo */
+.home-login-btn {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: #333;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* área dos botões */
+.home-btn-area {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+/* botões laranja */
+.home-btn {
+    background: #ff6600;
+    width: 350px;        /* tamanho igual para todos */
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 28px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+}
+
+.home-btn:hover {
+    background: #e05600;
+    transform: scale(1.03);
+}
+
+.home-ola {
+    margin-top: -5px;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    font-family: Arial, sans-serif;
 }

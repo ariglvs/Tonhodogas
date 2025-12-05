@@ -1,21 +1,22 @@
-<h1>Cadastrar Usuário</h1>
+{% extends "auth_base.html" %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    
-    <label>Nome:</label><br>
-    <input type="text" name="nome"><br><br>
+{% block title %}Cadastrar Usuário{% endblock %}
 
-    <label>Email:</label><br>
-    <input type="email" name="email"><br><br>
+{% block content %}
+<div class="card-login">
+    <h1>CADASTRAR</h1>
 
-    <label>Senha:</label><br>
-    <input type="password" name="senha"><br><br>
+    <form method="post">
+        {% csrf_token %}
 
-    <label>Tipo (cliente / entregador / admin):</label><br>
-    <input type="text" name="tipo"><br><br>
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="senha" placeholder="Senha">
+        <input type="text" name="tipo" placeholder="cliente / entregador / admin">
 
-    <button type="submit">Cadastrar</button>
-</form>
+        <button type="submit" class="btn-laranja">Cadastrar</button>
+    </form>
 
-<a href="/">Voltar</a>
+    <a href="/login/" class="link-conta">Voltar ao login</a>
+</div>
+{% endblock %}

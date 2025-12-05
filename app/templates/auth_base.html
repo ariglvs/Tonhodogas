@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="tela-verde">
+    <a href="/" class="link-inicio">INÍCIO</a>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
